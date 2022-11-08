@@ -1,0 +1,46 @@
+Option Public
+Option Declare
+%REM
+	Library lsconst
+	@@source <path>
+	@@version 1.0
+	@@author Andre Guirard
+	Description: Script library to include "lsconst.lss" and not cause an error if it's included multiple times. Use 'Use "lcconst"' instead of '%include "lsconst"' because
+		script libraries are only loaded once no matter how many modules include them.
+
+		A few other useful constants are also included.
+	
+Copyright 2022 HCL America
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+%END REM
+
+%Include "lsconst.lss"
+
+'Begin DNT
+Const NEWLINE = {
+}
+Const TABB = {	}
+Const DOTT = {■}
+Const PROMPT_CHOOSEDATABASE = 13
+' Add your own constants between the tags below.
+'@@CUSTOMCODE moreconstants
+'@@ENDCUSTOM
+
+%REM
+	Function DECIMALCHAR
+	Description: Return the character used as a decimal point on this system ("." or ",")
+%END REM
+Function DECIMALCHAR As String
+	DECIMALCHAR = Mid$(CStr(1.5), 2, 1)
+End Function
